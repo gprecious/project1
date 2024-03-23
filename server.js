@@ -1,4 +1,4 @@
-const cors = require('cors');
+const cors = require("cors");
 const express = require("express");
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
@@ -7,7 +7,7 @@ const PORT = 7070;
 
 app.use(cors());
 
-const dbPath = path.join(__dirname, 'senti.db');
+const dbPath = path.join(__dirname, "senti.db");
 
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
@@ -64,7 +64,68 @@ app.get("/data/professors", (req, res) => {
   });
 });
 
+// 수업 테이블의 polarity 합산
+app.get("/data/lecture", (req, res) => {
+  const sql = `
+    SELECT university_name, SUM(polarity) as total_polarity
+    FROM 수업
+    GROUP BY university_name
+  `;
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      res.status(400).send({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: rows,
+    });
+  });
+});
+
+// 장학금 테이블의 polarity 합산
+app.get("/data/jang", (req, res) => {
+  const sql = `
+    SELECT university_name, SUM(polarity) as total_polarity
+    FROM 장학금
+    GROUP BY university_name
+  `;
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      res.status(400).send({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: rows,
+    });
+  });
+});
+
+// 등록금 테이블의 polarity 합산
+app.get("/data/jang", (req, res) => {
+  const sql = `
+    SELECT university_name, SUM(polarity) as total_polarity
+    FROM 등록금
+    GROUP BY university_name
+  `;
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      res.status(400).send({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: rows,
+    });
+  });
+});
+
 // 서버 시작
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
