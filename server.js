@@ -1,15 +1,16 @@
 const express = require("express");
+const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 const app = express();
 const PORT = 7070;
 
-// SQLite 데이터베이스 연결
-const db = new sqlite3.Database("senti.db", (err) => {
+const dbPath = path.join(__dirname, 'senti.db');
+
+const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
-    console.error("Error opening database", err.message);
-  } else {
-    console.log("Connected to the SQLite database.");
+    return console.error("Error opening database", err.message);
   }
+  console.log("Connected to the SQLite database.");
 });
 
 // 모든 테이블의 polarity 합산

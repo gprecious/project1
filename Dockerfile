@@ -16,7 +16,7 @@ RUN npm install
 COPY . .
 
 # 앱이 3000 포트에서 실행됩니다. Docker 컨테이너 내부 포트 설정
-EXPOSE 3000
+EXPOSE 7070
 
 # 앱 실행
 CMD [ "node", "server.js" ]
