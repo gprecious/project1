@@ -1,8 +1,11 @@
+const cors = require('cors');
 const express = require("express");
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 const app = express();
 const PORT = 7070;
+
+app.use(cors());
 
 const dbPath = path.join(__dirname, 'senti.db');
 
