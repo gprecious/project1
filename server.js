@@ -124,8 +124,99 @@ app.get("/data/deung", (req, res) => {
   });
 });
 
+// 교수 테이블의 년도별 polarity
+app.get("/data/year/professors", (req, res) => {
+  const sql = `
+    SELECT university_name,
+    strftime('%Y', date) AS year,
+    SUM(polarity) AS sum_polarity
+    FROM 교수
+    GROUP BY university_name, year
+    ORDER BY university_name, year
+  `;
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      res.status(400).send({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: rows,
+    });
+  });
+});
+
+// 수업 테이블의 년도별 polarity
+app.get("/data/year/lecture", (req, res) => {
+  const sql = `
+    SELECT university_name,
+    strftime('%Y', date) AS year,
+    SUM(polarity) AS sum_polarity
+    FROM 수업
+    GROUP BY university_name, year
+    ORDER BY university_name, year
+  `;
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      res.status(400).send({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: rows,
+    });
+  });
+});
+
+// 장학금 테이블의 년도별 polarity
+app.get("/data/year/jang", (req, res) => {
+  const sql = `
+    SELECT university_name,
+    strftime('%Y', date) AS year,
+    SUM(polarity) AS sum_polarity
+    FROM 장학금
+    GROUP BY university_name, year
+    ORDER BY university_name, year
+  `;
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      res.status(400).send({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: rows,
+    });
+  });
+});
+
+// 등록금 테이블의 년도별 polarity
+app.get("/data/year/deung", (req, res) => {
+  const sql = `
+    SELECT university_name,
+    strftime('%Y', date) AS year,
+    SUM(polarity) AS sum_polarity
+    FROM 등록금
+    GROUP BY university_name, year
+    ORDER BY university_name, year
+  `;
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      res.status(400).send({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: rows,
+    });
+  });
+});
+
 // 서버 시작
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-
