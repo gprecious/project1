@@ -105,7 +105,7 @@ app.get("/data/jang", (req, res) => {
 });
 
 // 등록금 테이블의 polarity 합산
-app.get("/data/jang", (req, res) => {
+app.get("/data/deung", (req, res) => {
   const sql = `
     SELECT university_name, SUM(polarity) as total_polarity
     FROM 등록금
