@@ -7,7 +7,7 @@ const PORT = 7070;
 
 app.use(cors());
 
-const dbPath = path.join(__dirname, "senti.db");
+const dbPath = path.join(__dirname, "senti2.db");
 
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
