@@ -22,11 +22,11 @@ app.get("/data/total", (req, res) => {
     SELECT university_name,
     AVG(
       CASE result
-          WHEN '매우부정' THEN 1
+          WHEN '매우 부정' THEN 1
           WHEN '부정' THEN 2
           WHEN '중립' THEN 3
           WHEN '긍정' THEN 4
-          WHEN '매우긍정' THEN 5
+          WHEN '매우 긍정' THEN 5
       END
     ) AS average_result
     FROM (
@@ -65,11 +65,11 @@ app.get("/data/professors", (req, res) => {
     SELECT university_name,
     AVG(
         CASE result
-            WHEN '매우부정' THEN 1
+            WHEN '매우 부정' THEN 1
             WHEN '부정' THEN 2
             WHEN '중립' THEN 3
             WHEN '긍정' THEN 4
-            WHEN '매우긍정' THEN 5
+            WHEN '매우 긍정' THEN 5
         END
     ) AS average_result
     FROM 교수
@@ -94,11 +94,11 @@ app.get("/data/lecture", (req, res) => {
     SELECT university_name,
     AVG(
         CASE result
-            WHEN '매우부정' THEN 1
+            WHEN '매우 부정' THEN 1
             WHEN '부정' THEN 2
             WHEN '중립' THEN 3
             WHEN '긍정' THEN 4
-            WHEN '매우긍정' THEN 5
+            WHEN '매우 긍정' THEN 5
         END
     ) AS average_result
     FROM 교과
@@ -123,11 +123,11 @@ app.get("/data/deung", (req, res) => {
     SELECT university_name,
     AVG(
         CASE result
-            WHEN '매우부정' THEN 1
+            WHEN '매우 부정' THEN 1
             WHEN '부정' THEN 2
             WHEN '중립' THEN 3
             WHEN '긍정' THEN 4
-            WHEN '매우긍정' THEN 5
+            WHEN '매우 긍정' THEN 5
         END
     ) AS average_result
     FROM 등록금
@@ -152,11 +152,11 @@ app.get("/data/bok", (req, res) => {
     SELECT university_name,
     AVG(
         CASE result
-            WHEN '매우부정' THEN 1
+            WHEN '매우 부정' THEN 1
             WHEN '부정' THEN 2
             WHEN '중립' THEN 3
             WHEN '긍정' THEN 4
-            WHEN '매우긍정' THEN 5
+            WHEN '매우 긍정' THEN 5
         END
     ) AS average_result
     FROM 복지
@@ -181,11 +181,11 @@ app.get("/data/be", (req, res) => {
     SELECT university_name,
     AVG(
         CASE result
-            WHEN '매우부정' THEN 1
+            WHEN '매우 부정' THEN 1
             WHEN '부정' THEN 2
             WHEN '중립' THEN 3
             WHEN '긍정' THEN 4
-            WHEN '매우긍정' THEN 5
+            WHEN '매우 긍정' THEN 5
         END
     ) AS average_result
     FROM 비교과
@@ -210,11 +210,11 @@ app.get("/data/si", (req, res) => {
     SELECT university_name,
     AVG(
         CASE result
-            WHEN '매우부정' THEN 1
+            WHEN '매우 부정' THEN 1
             WHEN '부정' THEN 2
             WHEN '중립' THEN 3
             WHEN '긍정' THEN 4
-            WHEN '매우긍정' THEN 5
+            WHEN '매우 긍정' THEN 5
         END
     ) AS average_result
     FROM 시설
@@ -239,11 +239,11 @@ app.get("/data/jin", (req, res) => {
     SELECT university_name,
     AVG(
         CASE result
-            WHEN '매우부정' THEN 1
+            WHEN '매우 부정' THEN 1
             WHEN '부정' THEN 2
             WHEN '중립' THEN 3
             WHEN '긍정' THEN 4
-            WHEN '매우긍정' THEN 5
+            WHEN '매우 긍정' THEN 5
         END
     ) AS average_result
     FROM 진로
@@ -269,11 +269,11 @@ app.get("/data/year/professors", (req, res) => {
     strftime('%Y', date) AS year,
     AVG(
         CASE result
-            WHEN '매우부정' THEN 1
+            WHEN '매우 부정' THEN 1
             WHEN '부정' THEN 2
             WHEN '중립' THEN 3
             WHEN '긍정' THEN 4
-            WHEN '매우긍정' THEN 5
+            WHEN '매우 긍정' THEN 5
         END
     ) AS average_result
     FROM 교수
@@ -300,11 +300,11 @@ app.get("/data/year/lecture", (req, res) => {
     strftime('%Y', date) AS year,
     AVG(
         CASE result
-            WHEN '매우부정' THEN 1
+            WHEN '매우 부정' THEN 1
             WHEN '부정' THEN 2
             WHEN '중립' THEN 3
             WHEN '긍정' THEN 4
-            WHEN '매우긍정' THEN 5
+            WHEN '매우 긍정' THEN 5
         END
     ) AS average_result
     FROM 교과
@@ -331,11 +331,11 @@ app.get("/data/year/jang", (req, res) => {
     strftime('%Y', date) AS year,
     AVG(
         CASE result
-            WHEN '매우부정' THEN 1
+            WHEN '매우 부정' THEN 1
             WHEN '부정' THEN 2
             WHEN '중립' THEN 3
             WHEN '긍정' THEN 4
-            WHEN '매우긍정' THEN 5
+            WHEN '매우 긍정' THEN 5
         END
     ) AS average_result
     FROM 장학금
@@ -362,11 +362,11 @@ app.get("/data/year/deung", (req, res) => {
     strftime('%Y', date) AS year,
     AVG(
         CASE result
-            WHEN '매우부정' THEN 1
+            WHEN '매우 부정' THEN 1
             WHEN '부정' THEN 2
             WHEN '중립' THEN 3
             WHEN '긍정' THEN 4
-            WHEN '매우긍정' THEN 5
+            WHEN '매우 긍정' THEN 5
         END
     ) AS average_result
     FROM 등록금
@@ -391,11 +391,11 @@ app.get("/data/year/deung", (req, res) => {
 app.get("/data/bar/lecture", (req, res) => {
   const sql = `
     SELECT university_name,
-    COUNT(CASE WHEN result = '매우부정' THEN 1 END) AS count1,
+    COUNT(CASE WHEN result = '매우 부정' THEN 1 END) AS count1,
     COUNT(CASE WHEN result = '부정' THEN 1 END) AS count2,
     COUNT(CASE WHEN result = '중립' THEN 1 END) AS count3,
     COUNT(CASE WHEN result = '긍정' THEN 1 END) AS count4,
-    COUNT(CASE WHEN result = '매우긍정' THEN 1 END) AS count5
+    COUNT(CASE WHEN result = '매우 긍정' THEN 1 END) AS count5
     FROM 교과
     GROUP BY university_name
     ORDER BY university_name
@@ -417,11 +417,11 @@ app.get("/data/bar/lecture", (req, res) => {
 app.get("/data/bar/professors", (req, res) => {
   const sql = `
     SELECT university_name,
-    COUNT(CASE WHEN result = '매우부정' THEN 1 END) AS count1,
+    COUNT(CASE WHEN result = '매우 부정' THEN 1 END) AS count1,
     COUNT(CASE WHEN result = '부정' THEN 1 END) AS count2,
     COUNT(CASE WHEN result = '중립' THEN 1 END) AS count3,
     COUNT(CASE WHEN result = '긍정' THEN 1 END) AS count4,
-    COUNT(CASE WHEN result = '매우긍정' THEN 1 END) AS count5
+    COUNT(CASE WHEN result = '매우 긍정' THEN 1 END) AS count5
     FROM 교수
     GROUP BY university_name
     ORDER BY university_name
@@ -443,11 +443,11 @@ app.get("/data/bar/professors", (req, res) => {
 app.get("/data/bar/deung", (req, res) => {
   const sql = `
     SELECT university_name,
-    COUNT(CASE WHEN result = '매우부정' THEN 1 END) AS count1,
+    COUNT(CASE WHEN result = '매우 부정' THEN 1 END) AS count1,
     COUNT(CASE WHEN result = '부정' THEN 1 END) AS count2,
     COUNT(CASE WHEN result = '중립' THEN 1 END) AS count3,
     COUNT(CASE WHEN result = '긍정' THEN 1 END) AS count4,
-    COUNT(CASE WHEN result = '매우긍정' THEN 1 END) AS count5
+    COUNT(CASE WHEN result = '매우 긍정' THEN 1 END) AS count5
     FROM 등록금
     GROUP BY university_name
     ORDER BY university_name
@@ -469,11 +469,11 @@ app.get("/data/bar/deung", (req, res) => {
 app.get("/data/bar/bok", (req, res) => {
   const sql = `
     SELECT university_name,
-    COUNT(CASE WHEN result = '매우부정' THEN 1 END) AS count1,
+    COUNT(CASE WHEN result = '매우 부정' THEN 1 END) AS count1,
     COUNT(CASE WHEN result = '부정' THEN 1 END) AS count2,
     COUNT(CASE WHEN result = '중립' THEN 1 END) AS count3,
     COUNT(CASE WHEN result = '긍정' THEN 1 END) AS count4,
-    COUNT(CASE WHEN result = '매우긍정' THEN 1 END) AS count5
+    COUNT(CASE WHEN result = '매우 긍정' THEN 1 END) AS count5
     FROM 복지
     GROUP BY university_name
     ORDER BY university_name
@@ -495,11 +495,11 @@ app.get("/data/bar/bok", (req, res) => {
 app.get("/data/bar/be", (req, res) => {
   const sql = `
     SELECT university_name,
-    COUNT(CASE WHEN result = '매우부정' THEN 1 END) AS count1,
+    COUNT(CASE WHEN result = '매우 부정' THEN 1 END) AS count1,
     COUNT(CASE WHEN result = '부정' THEN 1 END) AS count2,
     COUNT(CASE WHEN result = '중립' THEN 1 END) AS count3,
     COUNT(CASE WHEN result = '긍정' THEN 1 END) AS count4,
-    COUNT(CASE WHEN result = '매우긍정' THEN 1 END) AS count5
+    COUNT(CASE WHEN result = '매우 긍정' THEN 1 END) AS count5
     FROM 비교과
     GROUP BY university_name
     ORDER BY university_name
@@ -521,11 +521,11 @@ app.get("/data/bar/be", (req, res) => {
 app.get("/data/bar/si", (req, res) => {
   const sql = `
     SELECT university_name,
-    COUNT(CASE WHEN result = '매우부정' THEN 1 END) AS count1,
+    COUNT(CASE WHEN result = '매우 부정' THEN 1 END) AS count1,
     COUNT(CASE WHEN result = '부정' THEN 1 END) AS count2,
     COUNT(CASE WHEN result = '중립' THEN 1 END) AS count3,
     COUNT(CASE WHEN result = '긍정' THEN 1 END) AS count4,
-    COUNT(CASE WHEN result = '매우긍정' THEN 1 END) AS count5
+    COUNT(CASE WHEN result = '매우 긍정' THEN 1 END) AS count5
     FROM 시설
     GROUP BY university_name
     ORDER BY university_name
@@ -547,11 +547,11 @@ app.get("/data/bar/si", (req, res) => {
 app.get("/data/bar/jin", (req, res) => {
   const sql = `
     SELECT university_name,
-    COUNT(CASE WHEN result = '매우부정' THEN 1 END) AS count1,
+    COUNT(CASE WHEN result = '매우 부정' THEN 1 END) AS count1,
     COUNT(CASE WHEN result = '부정' THEN 1 END) AS count2,
     COUNT(CASE WHEN result = '중립' THEN 1 END) AS count3,
     COUNT(CASE WHEN result = '긍정' THEN 1 END) AS count4,
-    COUNT(CASE WHEN result = '매우긍정' THEN 1 END) AS count5
+    COUNT(CASE WHEN result = '매우 긍정' THEN 1 END) AS count5
     FROM 진로
     GROUP BY university_name
     ORDER BY university_name
