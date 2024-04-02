@@ -16,7 +16,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
   console.log("Connected to the SQLite database.");
 });
 
-// 모든 테이블의 polarity 합산 교과 교수 등록금 복지 비교과 시설 진로
+// 모든 테이블의 result 합산 교과 교수 등록금 복지 비교과 시설 진로
 app.get("/data/total", (req, res) => {
   const sql = `
     SELECT university_name,
@@ -30,19 +30,19 @@ app.get("/data/total", (req, res) => {
       END
     ) AS average_result
     FROM (
-      SELECT university_name, polarity FROM 교수
+      SELECT university_name, result FROM 교수
       UNION ALL
-      SELECT university_name, polarity FROM 등록금
+      SELECT university_name, result FROM 등록금
       UNION ALL
-      SELECT university_name, polarity FROM 복지
+      SELECT university_name, result FROM 복지
       UNION ALL
-      SELECT university_name, polarity FROM 비교과
+      SELECT university_name, result FROM 비교과
       UNION ALL
-      SELECT university_name, polarity FROM 시설
+      SELECT university_name, result FROM 시설
       UNION ALL
-      SELECT university_name, polarity FROM 진로
+      SELECT university_name, result FROM 진로
       UNION ALL
-      SELECT university_name, polarity FROM 교과
+      SELECT university_name, result FROM 교과
     )
     GROUP BY university_name
   `;
@@ -59,7 +59,7 @@ app.get("/data/total", (req, res) => {
   });
 });
 
-// 교수 테이블의 polarity 합산
+// 교수 테이블의 result 합산
 app.get("/data/professors", (req, res) => {
   const sql = `
     SELECT university_name,
@@ -88,7 +88,7 @@ app.get("/data/professors", (req, res) => {
   });
 });
 
-// 교과 테이블의 polarity 합산
+// 교과 테이블의 result 합산
 app.get("/data/lecture", (req, res) => {
   const sql = `
     SELECT university_name,
@@ -117,7 +117,7 @@ app.get("/data/lecture", (req, res) => {
   });
 });
 
-// 등록금 테이블의 polarity 합산
+// 등록금 테이블의 result 합산
 app.get("/data/deung", (req, res) => {
   const sql = `
     SELECT university_name,
@@ -146,7 +146,7 @@ app.get("/data/deung", (req, res) => {
   });
 });
 
-// 복지 테이블의 polarity 합산
+// 복지 테이블의 result 합산
 app.get("/data/bok", (req, res) => {
   const sql = `
     SELECT university_name,
@@ -175,7 +175,7 @@ app.get("/data/bok", (req, res) => {
   });
 });
 
-// 비교과 테이블의 polarity 합산
+// 비교과 테이블의 result 합산
 app.get("/data/be", (req, res) => {
   const sql = `
     SELECT university_name,
@@ -204,7 +204,7 @@ app.get("/data/be", (req, res) => {
   });
 });
 
-// 시설 테이블의 polarity 합산
+// 시설 테이블의 result 합산
 app.get("/data/si", (req, res) => {
   const sql = `
     SELECT university_name,
@@ -233,7 +233,7 @@ app.get("/data/si", (req, res) => {
   });
 });
 
-// 진로 테이블의 polarity 합산
+// 진로 테이블의 result 합산
 app.get("/data/jin", (req, res) => {
   const sql = `
     SELECT university_name,
@@ -262,7 +262,7 @@ app.get("/data/jin", (req, res) => {
   });
 });
 
-// 교수 테이블의 년도별 polarity
+// 교수 테이블의 년도별 result
 app.get("/data/year/professors", (req, res) => {
   const sql = `
     SELECT university_name,
@@ -293,7 +293,7 @@ app.get("/data/year/professors", (req, res) => {
   });
 });
 
-// 수업 테이블의 년도별 polarity
+// 수업 테이블의 년도별 result
 app.get("/data/year/lecture", (req, res) => {
   const sql = `
     SELECT university_name,
@@ -324,7 +324,7 @@ app.get("/data/year/lecture", (req, res) => {
   });
 });
 
-// 장학금 테이블의 년도별 polarity
+// 장학금 테이블의 년도별 result
 app.get("/data/year/jang", (req, res) => {
   const sql = `
     SELECT university_name,
@@ -355,7 +355,7 @@ app.get("/data/year/jang", (req, res) => {
   });
 });
 
-// 등록금 테이블의 년도별 polarity
+// 등록금 테이블의 년도별 result
 app.get("/data/year/deung", (req, res) => {
   const sql = `
     SELECT university_name,
