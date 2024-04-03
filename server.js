@@ -325,7 +325,7 @@ app.get("/data/year/lecture", (req, res) => {
 });
 
 // 장학금 테이블의 년도별 result
-app.get("/data/year/jang", (req, res) => {
+app.get("/data/year/bok", (req, res) => {
   const sql = `
     SELECT university_name,
     strftime('%Y', date) AS year,
@@ -338,7 +338,7 @@ app.get("/data/year/jang", (req, res) => {
             WHEN '매우 긍정' THEN 5
         END
     ) AS average_result
-    FROM 장학금
+    FROM 복지
     GROUP BY university_name, strftime('%Y', date)
     ORDER BY university_name, year
   `;
