@@ -386,6 +386,68 @@ app.get("/data/year/deung", (req, res) => {
   });
 });
 
+// 비교과 테이블의 년도별 result
+app.get("/data/year/be", (req, res) => {
+  const sql = `
+    SELECT university_name,
+    strftime('%Y', date) AS year,
+    AVG(
+        CASE result
+            WHEN '매우 부정' THEN 1
+            WHEN '부정' THEN 2
+            WHEN '중립' THEN 3
+            WHEN '긍정' THEN 4
+            WHEN '매우 긍정' THEN 5
+        END
+    ) AS average_result
+    FROM 비교과
+    GROUP BY university_name, strftime('%Y', date)
+    ORDER BY university_name, year
+  `;
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      res.status(400).send({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: rows,
+    });
+  });
+});
+
+// 시설 테이블의 년도별 result
+app.get("/data/year/si", (req, res) => {
+  const sql = `
+    SELECT university_name,
+    strftime('%Y', date) AS year,
+    AVG(
+        CASE result
+            WHEN '매우 부정' THEN 1
+            WHEN '부정' THEN 2
+            WHEN '중립' THEN 3
+            WHEN '긍정' THEN 4
+            WHEN '매우 긍정' THEN 5
+        END
+    ) AS average_result
+    FROM 시설
+    GROUP BY university_name, strftime('%Y', date)
+    ORDER BY university_name, year
+  `;
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      res.status(400).send({ error: err.message });
+      return;
+    }
+    res.json({
+      message: "success",
+      data: rows,
+    });
+  });
+});
+
 // 지금부터 막대그래프용
 // 교과 테이블의 긍부정 카운트
 app.get("/data/bar/lecture", (req, res) => {
